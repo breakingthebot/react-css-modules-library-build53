@@ -16,6 +16,7 @@ import { Progress } from './components/Progress/Progress';
 import { Skeleton } from './components/Skeleton/Skeleton';
 import { Tabs } from './components/Tabs/Tabs';
 import { Avatar, AvatarGroup } from './components/Avatar/Avatar';
+import { Tooltip } from './components/Tooltip/Tooltip';
 
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -95,7 +96,7 @@ export function App() {
       <header className={styles.header}>
         <div className={styles.badgeStrip}>
           <Badge variant="info" hasDot isPulse>Scoped CSS Architecture</Badge>
-          <Badge variant="success">v1.5.0 Release</Badge>
+          <Badge variant="success">v1.6.0 Release</Badge>
           <Badge variant="neutral">Vite + React</Badge>
         </div>
         <h1 className={styles.title}>ModulaUI Component Library</h1>
@@ -112,17 +113,23 @@ export function App() {
         </div>
 
         <div className={styles.buttonRow}>
-          <Button variant="primary" onClick={() => addToast('success', 'Primary Action', 'Clicked primary button!')}>
-            Primary Action
-          </Button>
+          <Tooltip content="Primary CTA button with linear gradient styling" position="top">
+            <Button variant="primary" onClick={() => addToast('success', 'Primary Action', 'Clicked primary button!')}>
+              Primary Action
+            </Button>
+          </Tooltip>
 
-          <Button variant="secondary" onClick={() => addToast('info', 'Secondary Action', 'Clicked secondary button!')}>
-            Secondary Action
-          </Button>
+          <Tooltip content="Secondary surface button with subtle border" position="top">
+            <Button variant="secondary" onClick={() => addToast('info', 'Secondary Action', 'Clicked secondary button!')}>
+              Secondary Action
+            </Button>
+          </Tooltip>
 
-          <Button variant="danger" onClick={() => addToast('danger', 'Destructive Action', 'Triggered dangerous action!')}>
-            Danger Action
-          </Button>
+          <Tooltip content="⚠️ Irreversible dangerous action trigger" position="top">
+            <Button variant="danger" onClick={() => addToast('danger', 'Destructive Action', 'Triggered dangerous action!')}>
+              Danger Action
+            </Button>
+          </Tooltip>
 
           <Button variant="outline" onClick={() => addToast('warning', 'Outline Action', 'Clicked outline button!')}>
             Outline Button
@@ -133,11 +140,37 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 2: AVATAR & AVATAR GROUP (NEW v1.5.0) */}
+      {/* SECTION 2: TOOLTIP HOVER POPUP (NEW v1.6.0) */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>2. Scoped Avatar &amp; Avatar Group Component (`Avatar.module.css`)</h2>
-          <Badge variant="info" hasDot isPulse>NEW v1.5.0</Badge>
+          <h2 className={styles.sectionTitle}>2. Scoped Tooltip Hover Popup Component (`Tooltip.module.css`)</h2>
+          <Badge variant="info" hasDot isPulse>NEW v1.6.0</Badge>
+        </div>
+
+        <div className={styles.buttonRow}>
+          <Tooltip content="Top positioned tooltip popup" position="top">
+            <Button variant="outline">Hover Top</Button>
+          </Tooltip>
+
+          <Tooltip content="Bottom positioned tooltip popup" position="bottom">
+            <Button variant="outline">Hover Bottom</Button>
+          </Tooltip>
+
+          <Tooltip content="Left positioned tooltip popup" position="left">
+            <Button variant="outline">Hover Left</Button>
+          </Tooltip>
+
+          <Tooltip content="Right positioned tooltip popup" position="right">
+            <Button variant="outline">Hover Right</Button>
+          </Tooltip>
+        </div>
+      </section>
+
+      {/* SECTION 3: AVATAR & AVATAR GROUP */}
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>3. Scoped Avatar &amp; Avatar Group Component (`Avatar.module.css`)</h2>
+          <Badge variant="neutral">User Profiles</Badge>
         </div>
 
         <div className={styles.grid}>
@@ -146,10 +179,18 @@ export function App() {
             <Card.Header title="User Avatar Badges" subtitle="Initials fallback and real-time status dots" />
             <Card.Body>
               <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
-                <Avatar name="Jane Doe" size="lg" status="online" />
-                <Avatar name="Alex Smith" size="lg" status="busy" />
-                <Avatar name="Charlie Brown" size="lg" status="away" />
-                <Avatar name="David Lee" size="lg" status="offline" />
+                <Tooltip content="Jane Doe (Online)" position="top">
+                  <Avatar name="Jane Doe" size="lg" status="online" />
+                </Tooltip>
+                <Tooltip content="Alex Smith (Busy)" position="top">
+                  <Avatar name="Alex Smith" size="lg" status="busy" />
+                </Tooltip>
+                <Tooltip content="Charlie Brown (Away)" position="top">
+                  <Avatar name="Charlie Brown" size="lg" status="away" />
+                </Tooltip>
+                <Tooltip content="David Lee (Offline)" position="top">
+                  <Avatar name="David Lee" size="lg" status="offline" />
+                </Tooltip>
               </div>
             </Card.Body>
           </Card>
@@ -173,10 +214,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 3: TABS NAVIGATION BAR */}
+      {/* SECTION 4: TABS NAVIGATION BAR */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>3. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>4. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
           <Badge variant="neutral">Navigation System</Badge>
         </div>
 
@@ -199,10 +240,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 4: PROGRESS BAR & SKELETON LOADERS */}
+      {/* SECTION 5: PROGRESS BAR & SKELETON LOADERS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>4. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>5. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
           <Badge variant="neutral">Feedback System</Badge>
         </div>
 
@@ -249,10 +290,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 5: FORM INPUT & TOGGLE CONTROLS */}
+      {/* SECTION 6: FORM INPUT & TOGGLE CONTROLS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>5. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>6. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
           <Badge variant="neutral">Form Controls</Badge>
         </div>
 
@@ -319,10 +360,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 6: MODAL COMPONENT */}
+      {/* SECTION 7: MODAL COMPONENT */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>6. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>7. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -333,10 +374,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 7: CARD COMPONENT Showcase */}
+      {/* SECTION 8: CARD COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>7. Scoped Card Component (`Card.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>8. Scoped Card Component (`Card.module.css`)</h2>
           <Badge variant="neutral">Layout System</Badge>
         </div>
 
@@ -389,10 +430,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 8: BADGE PILL COMPONENT Showcase */}
+      {/* SECTION 9: BADGE PILL COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>8. Scoped Badge Pill Component (`Badge.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>9. Scoped Badge Pill Component (`Badge.module.css`)</h2>
           <Badge variant="neutral">Status Indicators</Badge>
         </div>
 
@@ -405,20 +446,20 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 9: ACCORDION COMPONENT Showcase */}
+      {/* SECTION 10: ACCORDION COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>9. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>10. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
           <Badge variant="neutral">Expandable FAQ</Badge>
         </div>
 
         <Accordion items={faqItems} />
       </section>
 
-      {/* SECTION 10: TOAST NOTIFICATION STREAM Showcase */}
+      {/* SECTION 11: TOAST NOTIFICATION STREAM Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>10. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>11. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
           <Badge variant="neutral">Floating Alerts</Badge>
         </div>
 
@@ -442,7 +483,7 @@ export function App() {
         </div>
 
         <div className={styles.codeSnippet}>
-          {`/* Compiled Output Sample */\n.Avatar__avatar___44x1 { border-radius: 50%; }\n.Avatar__statusDot___11z2 { position: absolute; }\n.Tabs__tab___99a1 { font-family: var(--font-sans); }\n.Progress__bar___82k1 { background: linear-gradient(...); }`}
+          {`/* Compiled Output Sample */\n.Tooltip__tooltip___77a1 { position: absolute; animation: tooltipFade 0.2s; }\n.Avatar__avatar___44x1 { border-radius: 50%; }\n.Tabs__tab___99a1 { font-family: var(--font-sans); }\n.Progress__bar___82k1 { background: linear-gradient(...); }`}
         </div>
       </section>
 
