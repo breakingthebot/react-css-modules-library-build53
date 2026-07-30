@@ -12,6 +12,8 @@ import { Toast } from './components/Toast/Toast';
 import { Modal } from './components/Modal/Modal';
 import { Input } from './components/Input/Input';
 import { Toggle } from './components/Toggle/Toggle';
+import { Progress } from './components/Progress/Progress';
+import { Skeleton } from './components/Skeleton/Skeleton';
 
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -19,6 +21,7 @@ export function App() {
   const [toggleState2, setToggleState2] = useState(false);
   const [inputValue, setInputValue] = useState('acme-corp');
   const [inputError, setInputError] = useState('');
+  const [progressVal, setProgressVal] = useState(68);
 
   const [toasts, setToasts] = useState([
     { id: 1, type: 'success', title: 'CSS Modules Loaded', message: 'All class names are scoped with zero global collision risk!' },
@@ -54,7 +57,7 @@ export function App() {
       <header className={styles.header}>
         <div className={styles.badgeStrip}>
           <Badge variant="info" hasDot isPulse>Scoped CSS Architecture</Badge>
-          <Badge variant="success">v1.2.0 Release</Badge>
+          <Badge variant="success">v1.3.0 Release</Badge>
           <Badge variant="neutral">Vite + React</Badge>
         </div>
         <h1 className={styles.title}>ModulaUI Component Library</h1>
@@ -92,11 +95,61 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 2: FORM INPUT & TOGGLE CONTROLS (NEW v1.2.0) */}
+      {/* SECTION 2: PROGRESS BAR & SKELETON LOADERS (NEW v1.3.0) */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>2. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
-          <Badge variant="info" hasDot isPulse>NEW v1.2.0</Badge>
+          <h2 className={styles.sectionTitle}>2. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
+          <Badge variant="info" hasDot isPulse>NEW v1.3.0</Badge>
+        </div>
+
+        <div className={styles.grid}>
+          {/* Progress Card */}
+          <Card>
+            <Card.Header
+              title="Progress Bar Indicators"
+              subtitle="Animated progress bars with gradient fills"
+              action={
+                <Button size="sm" variant="outline" onClick={() => setProgressVal((p) => (p >= 100 ? 10 : p + 15))}>
+                  Simulate Load
+                </Button>
+              }
+            />
+            <Card.Body>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <Progress label="CPU Allocation Capacity" value={progressVal} showValue variant="gradient" animated />
+                <Progress label="RAM Memory Usage" value={84} showValue variant="warning" />
+                <Progress label="NVMe Storage I/O" value={45} showValue variant="brand" size="sm" />
+                <Progress label="Edge CDN Bandwidth Saturation" value={92} showValue variant="danger" size="lg" animated />
+              </div>
+            </Card.Body>
+          </Card>
+
+          {/* Skeleton Loader Card */}
+          <Card>
+            <Card.Header title="Shimmer Skeleton Loader" subtitle="Placeholder shimmer animation during async fetches" />
+            <Card.Body>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <div style={{ display: 'flex', itemsCenter: 'center', gap: '12px' }}>
+                  <Skeleton variant="circular" width={44} height={44} />
+                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                    <Skeleton variant="text" width="60%" height={14} />
+                    <Skeleton variant="text" width="40%" height={10} />
+                  </div>
+                </div>
+
+                <Skeleton variant="rectangular" height={80} />
+                <Skeleton variant="text" count={2} />
+              </div>
+            </Card.Body>
+          </Card>
+        </div>
+      </section>
+
+      {/* SECTION 3: FORM INPUT & TOGGLE CONTROLS */}
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>3. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
+          <Badge variant="neutral">Form Controls</Badge>
         </div>
 
         <div className={styles.grid}>
@@ -162,10 +215,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 3: MODAL COMPONENT */}
+      {/* SECTION 4: MODAL COMPONENT */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>3. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>4. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -176,10 +229,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 4: CARD COMPONENT Showcase */}
+      {/* SECTION 5: CARD COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>4. Scoped Card Component (`Card.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>5. Scoped Card Component (`Card.module.css`)</h2>
           <Badge variant="neutral">Layout System</Badge>
         </div>
 
@@ -232,10 +285,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 5: BADGE PILL COMPONENT Showcase */}
+      {/* SECTION 6: BADGE PILL COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>5. Scoped Badge Pill Component (`Badge.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>6. Scoped Badge Pill Component (`Badge.module.css`)</h2>
           <Badge variant="neutral">Status Indicators</Badge>
         </div>
 
@@ -248,20 +301,20 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 6: ACCORDION COMPONENT Showcase */}
+      {/* SECTION 7: ACCORDION COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>6. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>7. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
           <Badge variant="neutral">Expandable FAQ</Badge>
         </div>
 
         <Accordion items={faqItems} />
       </section>
 
-      {/* SECTION 7: TOAST NOTIFICATION STREAM Showcase */}
+      {/* SECTION 8: TOAST NOTIFICATION STREAM Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>7. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>8. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
           <Badge variant="neutral">Floating Alerts</Badge>
         </div>
 
@@ -285,7 +338,7 @@ export function App() {
         </div>
 
         <div className={styles.codeSnippet}>
-          {`/* Compiled Output Sample */\n.Input__inputWrapper___1a8z { border-radius: var(--radius-md); }\n.Toggle__switchChecked___88bc { background: linear-gradient(...); }\n.Modal__overlay___4x9a { backdrop-filter: blur(12px); }\n.Button__button___3a1b { background: linear-gradient(...); }`}
+          {`/* Compiled Output Sample */\n.Progress__bar___82k1 { background: linear-gradient(...); }\n.Skeleton__skeleton___99a2 { animation: shimmer 1.6s infinite; }\n.Input__inputWrapper___1a8z { border-radius: var(--radius-md); }\n.Toggle__switchChecked___88bc { background: linear-gradient(...); }\n.Modal__overlay___4x9a { backdrop-filter: blur(12px); }\n.Button__button___3a1b { background: linear-gradient(...); }`}
         </div>
       </section>
 

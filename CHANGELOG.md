@@ -5,11 +5,16 @@ All notable changes to **Build 53 (ModulaUI — React CSS Modules Component Libr
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2026-07-29
+
+### Added
+- Integrated **Scoped Progress Bar & Skeleton Loader (`Progress.jsx`, `Skeleton.jsx`)**.
+- Added animated progress bars with gradient fills, percentage text, and shimmer keyframe skeleton loading placeholders.
+
 ## [1.2.0] - 2026-07-29
 
 ### Added
 - Integrated **Scoped Form Input & Toggle Controls (`Input.jsx`, `Toggle.jsx`)**.
-- Added input fields with addons, icons, error borders, and sliding track toggle switches with brand gradient active states.
 
 ## [1.1.0] - 2026-07-29
 
