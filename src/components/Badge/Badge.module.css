@@ -1,0 +1,74 @@
+/* Badge.module.css - Scoped Styles for Badge Component */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 9999px;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+  user-select: none;
+  width: fit-content;
+}
+
+/* Color Variants */
+.success {
+  background-color: var(--color-success-light);
+  color: #34d399;
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.warning {
+  background-color: var(--color-warning-light);
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.error {
+  background-color: var(--color-danger-light);
+  color: #f87171;
+  border-color: rgba(248, 113, 113, 0.3);
+}
+
+.info {
+  background-color: var(--color-info-light);
+  color: #22d3ee;
+  border-color: rgba(34, 211, 238, 0.3);
+}
+
+.neutral {
+  background-color: var(--bg-surface-elevated);
+  color: var(--text-secondary);
+  border-color: var(--border-color);
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.pulseDot {
+  position: relative;
+}
+
+.pulseDot::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0.4;
+  animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+  75%, 100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
