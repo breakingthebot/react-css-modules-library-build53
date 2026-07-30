@@ -5,11 +5,16 @@ All notable changes to **Build 53 (ModulaUI — React CSS Modules Component Libr
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.3.0] - 2026-07-30
+
+### Added
+- Integrated **Scoped Segmented Control Switcher Component (`SegmentedControl.jsx`, `SegmentedControl.module.css`)**.
+- Added compact tab button group switcher with active pill elevation shadows, full-width mode, and size options (`sm`, `md`, `lg`).
+
 ## [2.2.0] - 2026-07-30
 
 ### Added
 - Integrated **Scoped Data Table & Pagination Component (`Table.jsx`, `Table.module.css`)**.
-- Added sortable column headers (`▲`/`▼`), custom cell renderers, row hover highlights, and pagination controls.
 
 ## [2.1.0] - 2026-07-30
 

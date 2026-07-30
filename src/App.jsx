@@ -23,6 +23,7 @@ import { Slider } from './components/Slider/Slider';
 import { Breadcrumb } from './components/Breadcrumb/Breadcrumb';
 import { Drawer } from './components/Drawer/Drawer';
 import { Table } from './components/Table/Table';
+import { SegmentedControl } from './components/SegmentedControl/SegmentedControl';
 
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,6 +37,8 @@ export function App() {
   const [selectedRole, setSelectedRole] = useState('devops');
   const [rateLimitVal, setRateLimitVal] = useState(5000);
   const [scalingPodsVal, setScalingPodsVal] = useState(16);
+  const [viewMode, setViewMode] = useState('grid');
+  const [envScope, setEnvScope] = useState('production');
 
   const [toasts, setToasts] = useState([
     { id: 1, type: 'success', title: 'CSS Modules Loaded', message: 'All class names are scoped with zero global collision risk!' },
@@ -79,6 +82,18 @@ export function App() {
     { value: 'billing', label: 'Billing Manager', icon: '💳' },
   ];
 
+  const viewModeOptions = [
+    { value: 'grid', label: 'Grid View', icon: '🎛️' },
+    { value: 'list', label: 'List View', icon: '📜' },
+    { value: 'kanban', label: 'Kanban', icon: '📊' },
+  ];
+
+  const envScopeOptions = [
+    { value: 'development', label: 'Dev' },
+    { value: 'staging', label: 'Staging' },
+    { value: 'production', label: 'Production' },
+  ];
+
   const demoTabs = [
     {
       id: 'tab1',
@@ -89,18 +104,6 @@ export function App() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
           <p>Global CDN edge clusters operating at nominal latency across 14 edge locations.</p>
           <Progress label="Overall System SLA Health" value={99} showValue variant="gradient" animated />
-        </div>
-      ),
-    },
-    {
-      id: 'tab2',
-      label: 'Security & OAuth Scopes',
-      icon: '🔐',
-      badge: <Badge variant="info">3 Active Keys</Badge>,
-      content: (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <p>Active secret API keys and OAuth 2.0 bearer access scopes for dev environment.</p>
-          <Input label="Secret Production API Key" value="ak_prod_9918231x... (Encrypted)" readOnly addon="KEY" />
         </div>
       ),
     },
@@ -118,7 +121,7 @@ export function App() {
       key: 'name',
       label: 'Pod Cluster',
       sortable: true,
-      render: (val, row) => (
+      render: (val) => (
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <Avatar name={val} size="sm" />
           <span style={{ fontWeight: 600 }}>{val}</span>
@@ -153,9 +156,6 @@ export function App() {
     { id: 2, name: 'pod-worker-eu-west-1b', region: 'eu-west-1', status: 'Operational', load: '68%' },
     { id: 3, name: 'pod-worker-ap-east-1c', region: 'ap-east-1', status: 'Degraded', load: '89%' },
     { id: 4, name: 'pod-worker-sa-east-1d', region: 'sa-east-1', status: 'Offline', load: '0%' },
-    { id: 5, name: 'pod-worker-us-west-2a', region: 'us-west-2', status: 'Operational', load: '31%' },
-    { id: 6, name: 'pod-worker-eu-central-1a', region: 'eu-central-1', status: 'Operational', load: '55%' },
-    { id: 7, name: 'pod-worker-ap-southeast-1a', region: 'ap-southeast-1', status: 'Degraded', load: '82%' },
   ];
 
   return (
@@ -164,7 +164,7 @@ export function App() {
       <header className={styles.header}>
         <div className={styles.badgeStrip}>
           <Badge variant="info" hasDot isPulse>Scoped CSS Architecture</Badge>
-          <Badge variant="success">v2.2.0 Release</Badge>
+          <Badge variant="success">v2.3.0 Release</Badge>
           <Badge variant="neutral">Vite + React</Badge>
         </div>
         <h1 className={styles.title}>ModulaUI Component Library</h1>
@@ -208,11 +208,50 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 2: DATA TABLE & PAGINATION (NEW v2.2.0) */}
+      {/* SECTION 2: SEGMENTED CONTROL SWITCHER (NEW v2.3.0) */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>2. Scoped Data Table &amp; Pagination (`Table.module.css`)</h2>
-          <Badge variant="info" hasDot isPulse>NEW v2.2.0</Badge>
+          <h2 className={styles.sectionTitle}>2. Scoped Segmented Control Switcher (`SegmentedControl.module.css`)</h2>
+          <Badge variant="info" hasDot isPulse>NEW v2.3.0</Badge>
+        </div>
+
+        <div className={styles.grid}>
+          <Card>
+            <Card.Header title="Layout View Mode Switcher" subtitle="Icon & text segmented pill control" />
+            <Card.Body>
+              <SegmentedControl
+                options={viewModeOptions}
+                value={viewMode}
+                onChange={(val) => {
+                  setViewMode(val);
+                  addToast('info', 'View Mode Changed', `Switched layout view mode to ${val}`);
+                }}
+              />
+            </Card.Body>
+          </Card>
+
+          <Card>
+            <Card.Header title="Environment Scope Switcher" subtitle="Full width segmented control" />
+            <Card.Body>
+              <SegmentedControl
+                options={envScopeOptions}
+                value={envScope}
+                onChange={(val) => {
+                  setEnvScope(val);
+                  addToast('success', 'Environment Switched', `Active target environment set to ${val}`);
+                }}
+                fullWidth
+              />
+            </Card.Body>
+          </Card>
+        </div>
+      </section>
+
+      {/* SECTION 3: DATA TABLE & PAGINATION */}
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>3. Scoped Data Table &amp; Pagination (`Table.module.css`)</h2>
+          <Badge variant="neutral">Data Display</Badge>
         </div>
 
         <Card>
@@ -223,10 +262,10 @@ export function App() {
         </Card>
       </section>
 
-      {/* SECTION 3: SLIDE-OVER DRAWER PANEL */}
+      {/* SECTION 4: SLIDE-OVER DRAWER PANEL */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>3. Scoped Slide-Over Drawer Panel (`Drawer.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>4. Scoped Slide-Over Drawer Panel (`Drawer.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -237,10 +276,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 4: BREADCRUMB NAVIGATION TRAIL */}
+      {/* SECTION 5: BREADCRUMB NAVIGATION TRAIL */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>4. Scoped Breadcrumb Navigation Trail (`Breadcrumb.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>5. Scoped Breadcrumb Navigation Trail (`Breadcrumb.module.css`)</h2>
           <Badge variant="neutral">Navigation System</Badge>
         </div>
 
@@ -254,10 +293,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 5: SLIDER RANGE CONTROL */}
+      {/* SECTION 6: SLIDER RANGE CONTROL */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>5. Scoped Slider Range Control (`Slider.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>6. Scoped Slider Range Control (`Slider.module.css`)</h2>
           <Badge variant="neutral">Form Controls</Badge>
         </div>
 
@@ -296,10 +335,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 6: ALERT CALLOUT BANNERS */}
+      {/* SECTION 7: ALERT CALLOUT BANNERS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>6. Scoped Alert Callout Banner (`Alert.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>7. Scoped Alert Callout Banner (`Alert.module.css`)</h2>
           <Badge variant="neutral">Status Banners</Badge>
         </div>
 
@@ -326,10 +365,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 7: DROPDOWN SELECT MENU */}
+      {/* SECTION 8: DROPDOWN SELECT MENU */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>7. Scoped Dropdown Select Menu (`Select.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>8. Scoped Dropdown Select Menu (`Select.module.css`)</h2>
           <Badge variant="neutral">Form Controls</Badge>
         </div>
 
@@ -369,10 +408,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 8: TOOLTIP HOVER POPUP */}
+      {/* SECTION 9: TOOLTIP HOVER POPUP */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>8. Scoped Tooltip Hover Popup Component (`Tooltip.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>9. Scoped Tooltip Hover Popup Component (`Tooltip.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -395,10 +434,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 9: AVATAR & AVATAR GROUP */}
+      {/* SECTION 10: AVATAR & AVATAR GROUP */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>9. Scoped Avatar &amp; Avatar Group Component (`Avatar.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>10. Scoped Avatar &amp; Avatar Group Component (`Avatar.module.css`)</h2>
           <Badge variant="neutral">User Profiles</Badge>
         </div>
 
@@ -436,10 +475,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 10: TABS NAVIGATION BAR */}
+      {/* SECTION 11: TABS NAVIGATION BAR */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>10. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>11. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
           <Badge variant="neutral">Navigation System</Badge>
         </div>
 
@@ -453,10 +492,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 11: PROGRESS BAR & SKELETON LOADERS */}
+      {/* SECTION 12: PROGRESS BAR & SKELETON LOADERS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>11. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>12. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
           <Badge variant="neutral">Feedback System</Badge>
         </div>
 
@@ -485,10 +524,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 12: FORM INPUT & TOGGLE CONTROLS */}
+      {/* SECTION 13: FORM INPUT & TOGGLE CONTROLS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>12. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>13. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
           <Badge variant="neutral">Form Controls</Badge>
         </div>
 
@@ -528,10 +567,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 13: MODAL COMPONENT */}
+      {/* SECTION 14: MODAL COMPONENT */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>13. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>14. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -542,10 +581,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 14: CARD COMPONENT Showcase */}
+      {/* SECTION 15: CARD COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>14. Scoped Card Component (`Card.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>15. Scoped Card Component (`Card.module.css`)</h2>
           <Badge variant="neutral">Layout System</Badge>
         </div>
 
@@ -562,20 +601,20 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 15: ACCORDION COMPONENT Showcase */}
+      {/* SECTION 16: ACCORDION COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>15. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>16. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
           <Badge variant="neutral">Expandable FAQ</Badge>
         </div>
 
         <Accordion items={faqItems} />
       </section>
 
-      {/* SECTION 16: TOAST NOTIFICATION STREAM Showcase */}
+      {/* SECTION 17: TOAST NOTIFICATION STREAM Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>16. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>17. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
           <Badge variant="neutral">Floating Alerts</Badge>
         </div>
 
@@ -593,7 +632,7 @@ export function App() {
         </div>
 
         <div className={styles.codeSnippet}>
-          {`/* Compiled Output Sample */\n.Table__table___33x1 { border-collapse: collapse; }\n.Table__sortableTh___99a2 { cursor: pointer; }\n.Drawer__drawer___11z2 { backdrop-filter: blur(8px); }`}
+          {`/* Compiled Output Sample */\n.SegmentedControl__active___77a1 { background-color: var(--color-brand-light); }\n.Table__table___33x1 { border-collapse: collapse; }\n.Drawer__drawer___11z2 { backdrop-filter: blur(8px); }`}
         </div>
       </section>
 
