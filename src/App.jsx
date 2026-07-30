@@ -17,6 +17,7 @@ import { Skeleton } from './components/Skeleton/Skeleton';
 import { Tabs } from './components/Tabs/Tabs';
 import { Avatar, AvatarGroup } from './components/Avatar/Avatar';
 import { Tooltip } from './components/Tooltip/Tooltip';
+import { Select } from './components/Select/Select';
 
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,6 +26,8 @@ export function App() {
   const [inputValue, setInputValue] = useState('acme-corp');
   const [inputError, setInputError] = useState('');
   const [progressVal, setProgressVal] = useState(68);
+  const [selectedRegion, setSelectedRegion] = useState('us-east-1');
+  const [selectedRole, setSelectedRole] = useState('devops');
 
   const [toasts, setToasts] = useState([
     { id: 1, type: 'success', title: 'CSS Modules Loaded', message: 'All class names are scoped with zero global collision risk!' },
@@ -52,6 +55,20 @@ export function App() {
       title: 'Are CSS Modules compatible with server-side rendering (SSR)?',
       content: 'Absolutely. CSS Modules compile into regular static CSS files and class strings, making them zero-runtime and fully SSR compatible across frameworks like Next.js and Remix.',
     },
+  ];
+
+  const regionOptions = [
+    { value: 'us-east-1', label: 'us-east-1 (N. Virginia Edge)', icon: '🇺🇸' },
+    { value: 'eu-west-1', label: 'eu-west-1 (Frankfurt Edge)', icon: '🇩🇪' },
+    { value: 'ap-east-1', label: 'ap-east-1 (Tokyo Edge)', icon: '🇯🇵' },
+    { value: 'sa-east-1', label: 'sa-east-1 (São Paulo Edge)', icon: '🇧🇷', disabled: true },
+  ];
+
+  const roleOptions = [
+    { value: 'admin', label: 'Super Admin (Full Access)', icon: '👑' },
+    { value: 'devops', label: 'DevOps Engineer', icon: '🛠️' },
+    { value: 'security', label: 'Security Auditor', icon: '🛡️' },
+    { value: 'billing', label: 'Billing Manager', icon: '💳' },
   ];
 
   const demoTabs = [
@@ -96,7 +113,7 @@ export function App() {
       <header className={styles.header}>
         <div className={styles.badgeStrip}>
           <Badge variant="info" hasDot isPulse>Scoped CSS Architecture</Badge>
-          <Badge variant="success">v1.6.0 Release</Badge>
+          <Badge variant="success">v1.7.0 Release</Badge>
           <Badge variant="neutral">Vite + React</Badge>
         </div>
         <h1 className={styles.title}>ModulaUI Component Library</h1>
@@ -140,11 +157,54 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 2: TOOLTIP HOVER POPUP (NEW v1.6.0) */}
+      {/* SECTION 2: DROPDOWN SELECT MENU (NEW v1.7.0) */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>2. Scoped Tooltip Hover Popup Component (`Tooltip.module.css`)</h2>
-          <Badge variant="info" hasDot isPulse>NEW v1.6.0</Badge>
+          <h2 className={styles.sectionTitle}>2. Scoped Dropdown Select Menu (`Select.module.css`)</h2>
+          <Badge variant="info" hasDot isPulse>NEW v1.7.0</Badge>
+        </div>
+
+        <div className={styles.grid}>
+          {/* Select 1 */}
+          <Card>
+            <Card.Header title="Target Cluster Endpoint" subtitle="Custom dropdown with country flags & search" />
+            <Card.Body>
+              <Select
+                label="Primary Deployment Region"
+                options={regionOptions}
+                value={selectedRegion}
+                onChange={(val) => {
+                  setSelectedRegion(val);
+                  addToast('info', 'Region Changed', `Deployed region updated to ${val}`);
+                }}
+                searchable
+              />
+            </Card.Body>
+          </Card>
+
+          {/* Select 2 */}
+          <Card>
+            <Card.Header title="RBAC Permission Scope" subtitle="Select menu with custom icons & checkmarks" />
+            <Card.Body>
+              <Select
+                label="Assign Security Role"
+                options={roleOptions}
+                value={selectedRole}
+                onChange={(val) => {
+                  setSelectedRole(val);
+                  addToast('success', 'Role Updated', `User permission role set to ${val}`);
+                }}
+              />
+            </Card.Body>
+          </Card>
+        </div>
+      </section>
+
+      {/* SECTION 3: TOOLTIP HOVER POPUP */}
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>3. Scoped Tooltip Hover Popup Component (`Tooltip.module.css`)</h2>
+          <Badge variant="neutral">Overlay System</Badge>
         </div>
 
         <div className={styles.buttonRow}>
@@ -166,10 +226,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 3: AVATAR & AVATAR GROUP */}
+      {/* SECTION 4: AVATAR & AVATAR GROUP */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>3. Scoped Avatar &amp; Avatar Group Component (`Avatar.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>4. Scoped Avatar &amp; Avatar Group Component (`Avatar.module.css`)</h2>
           <Badge variant="neutral">User Profiles</Badge>
         </div>
 
@@ -214,10 +274,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 4: TABS NAVIGATION BAR */}
+      {/* SECTION 5: TABS NAVIGATION BAR */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>4. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>5. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
           <Badge variant="neutral">Navigation System</Badge>
         </div>
 
@@ -240,10 +300,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 5: PROGRESS BAR & SKELETON LOADERS */}
+      {/* SECTION 6: PROGRESS BAR & SKELETON LOADERS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>5. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>6. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
           <Badge variant="neutral">Feedback System</Badge>
         </div>
 
@@ -290,10 +350,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 6: FORM INPUT & TOGGLE CONTROLS */}
+      {/* SECTION 7: FORM INPUT & TOGGLE CONTROLS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>6. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>7. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
           <Badge variant="neutral">Form Controls</Badge>
         </div>
 
@@ -360,10 +420,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 7: MODAL COMPONENT */}
+      {/* SECTION 8: MODAL COMPONENT */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>7. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>8. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -374,10 +434,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 8: CARD COMPONENT Showcase */}
+      {/* SECTION 9: CARD COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>8. Scoped Card Component (`Card.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>9. Scoped Card Component (`Card.module.css`)</h2>
           <Badge variant="neutral">Layout System</Badge>
         </div>
 
@@ -430,10 +490,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 9: BADGE PILL COMPONENT Showcase */}
+      {/* SECTION 10: BADGE PILL COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>9. Scoped Badge Pill Component (`Badge.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>10. Scoped Badge Pill Component (`Badge.module.css`)</h2>
           <Badge variant="neutral">Status Indicators</Badge>
         </div>
 
@@ -446,20 +506,20 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 10: ACCORDION COMPONENT Showcase */}
+      {/* SECTION 11: ACCORDION COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>10. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>11. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
           <Badge variant="neutral">Expandable FAQ</Badge>
         </div>
 
         <Accordion items={faqItems} />
       </section>
 
-      {/* SECTION 11: TOAST NOTIFICATION STREAM Showcase */}
+      {/* SECTION 12: TOAST NOTIFICATION STREAM Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>11. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>12. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
           <Badge variant="neutral">Floating Alerts</Badge>
         </div>
 
@@ -483,7 +543,7 @@ export function App() {
         </div>
 
         <div className={styles.codeSnippet}>
-          {`/* Compiled Output Sample */\n.Tooltip__tooltip___77a1 { position: absolute; animation: tooltipFade 0.2s; }\n.Avatar__avatar___44x1 { border-radius: 50%; }\n.Tabs__tab___99a1 { font-family: var(--font-sans); }\n.Progress__bar___82k1 { background: linear-gradient(...); }`}
+          {`/* Compiled Output Sample */\n.Select__dropdown___88z1 { position: absolute; background: #0f172a; }\n.Select__optionSelected___33a2 { background: var(--color-brand-light); }\n.Tooltip__tooltip___77a1 { position: absolute; animation: tooltipFade 0.2s; }\n.Avatar__avatar___44x1 { border-radius: 50%; }`}
         </div>
       </section>
 
