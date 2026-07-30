@@ -18,6 +18,7 @@ import { Tabs } from './components/Tabs/Tabs';
 import { Avatar, AvatarGroup } from './components/Avatar/Avatar';
 import { Tooltip } from './components/Tooltip/Tooltip';
 import { Select } from './components/Select/Select';
+import { Alert } from './components/Alert/Alert';
 
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -113,7 +114,7 @@ export function App() {
       <header className={styles.header}>
         <div className={styles.badgeStrip}>
           <Badge variant="info" hasDot isPulse>Scoped CSS Architecture</Badge>
-          <Badge variant="success">v1.7.0 Release</Badge>
+          <Badge variant="success">v1.8.0 Release</Badge>
           <Badge variant="neutral">Vite + React</Badge>
         </div>
         <h1 className={styles.title}>ModulaUI Component Library</h1>
@@ -157,11 +158,49 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 2: DROPDOWN SELECT MENU (NEW v1.7.0) */}
+      {/* SECTION 2: ALERT CALLOUT BANNERS (NEW v1.8.0) */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>2. Scoped Dropdown Select Menu (`Select.module.css`)</h2>
-          <Badge variant="info" hasDot isPulse>NEW v1.7.0</Badge>
+          <h2 className={styles.sectionTitle}>2. Scoped Alert Callout Banner (`Alert.module.css`)</h2>
+          <Badge variant="info" hasDot isPulse>NEW v1.8.0</Badge>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <Alert
+            variant="info"
+            title="System Maintenance Scheduled"
+            onClose={() => addToast('info', 'Alert Dismissed', 'Dismissed Info Alert')}
+          >
+            Routine database indexing scheduled for 02:00 UTC. Zero downtime expected across us-east-1 cluster.
+          </Alert>
+
+          <Alert
+            variant="success"
+            title="Deployment Complete"
+            action={
+              <Button size="sm" variant="primary" onClick={() => addToast('success', 'Deployment Verified', 'SLA 99.99% confirmed')}>
+                View Telemetry Log
+              </Button>
+            }
+          >
+            Worker pods scaled +4 instances in 140ms. All health checks reported OK.
+          </Alert>
+
+          <Alert variant="warning" title="Memory Load Spike Detected">
+            Cluster memory usage reached 84% threshold in ap-east-1 region. Consider auto-scaling worker nodes.
+          </Alert>
+
+          <Alert variant="danger" title="Database Replica Connection Lost" onClose={() => {}}>
+            Primary DB lost connection to secondary replica host. Retrying exponential backoff (attempt 2 of 3).
+          </Alert>
+        </div>
+      </section>
+
+      {/* SECTION 3: DROPDOWN SELECT MENU */}
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>3. Scoped Dropdown Select Menu (`Select.module.css`)</h2>
+          <Badge variant="neutral">Form Controls</Badge>
         </div>
 
         <div className={styles.grid}>
@@ -200,10 +239,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 3: TOOLTIP HOVER POPUP */}
+      {/* SECTION 4: TOOLTIP HOVER POPUP */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>3. Scoped Tooltip Hover Popup Component (`Tooltip.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>4. Scoped Tooltip Hover Popup Component (`Tooltip.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -226,10 +265,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 4: AVATAR & AVATAR GROUP */}
+      {/* SECTION 5: AVATAR & AVATAR GROUP */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>4. Scoped Avatar &amp; Avatar Group Component (`Avatar.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>5. Scoped Avatar &amp; Avatar Group Component (`Avatar.module.css`)</h2>
           <Badge variant="neutral">User Profiles</Badge>
         </div>
 
@@ -274,10 +313,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 5: TABS NAVIGATION BAR */}
+      {/* SECTION 6: TABS NAVIGATION BAR */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>5. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>6. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
           <Badge variant="neutral">Navigation System</Badge>
         </div>
 
@@ -300,10 +339,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 6: PROGRESS BAR & SKELETON LOADERS */}
+      {/* SECTION 7: PROGRESS BAR & SKELETON LOADERS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>6. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>7. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
           <Badge variant="neutral">Feedback System</Badge>
         </div>
 
@@ -350,10 +389,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 7: FORM INPUT & TOGGLE CONTROLS */}
+      {/* SECTION 8: FORM INPUT & TOGGLE CONTROLS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>7. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>8. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
           <Badge variant="neutral">Form Controls</Badge>
         </div>
 
@@ -420,10 +459,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 8: MODAL COMPONENT */}
+      {/* SECTION 9: MODAL COMPONENT */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>8. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>9. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -434,10 +473,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 9: CARD COMPONENT Showcase */}
+      {/* SECTION 10: CARD COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>9. Scoped Card Component (`Card.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>10. Scoped Card Component (`Card.module.css`)</h2>
           <Badge variant="neutral">Layout System</Badge>
         </div>
 
@@ -490,10 +529,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 10: BADGE PILL COMPONENT Showcase */}
+      {/* SECTION 11: BADGE PILL COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>10. Scoped Badge Pill Component (`Badge.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>11. Scoped Badge Pill Component (`Badge.module.css`)</h2>
           <Badge variant="neutral">Status Indicators</Badge>
         </div>
 
@@ -506,20 +545,20 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 11: ACCORDION COMPONENT Showcase */}
+      {/* SECTION 12: ACCORDION COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>11. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>12. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
           <Badge variant="neutral">Expandable FAQ</Badge>
         </div>
 
         <Accordion items={faqItems} />
       </section>
 
-      {/* SECTION 12: TOAST NOTIFICATION STREAM Showcase */}
+      {/* SECTION 13: TOAST NOTIFICATION STREAM Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>12. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>13. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
           <Badge variant="neutral">Floating Alerts</Badge>
         </div>
 
@@ -543,7 +582,7 @@ export function App() {
         </div>
 
         <div className={styles.codeSnippet}>
-          {`/* Compiled Output Sample */\n.Select__dropdown___88z1 { position: absolute; background: #0f172a; }\n.Select__optionSelected___33a2 { background: var(--color-brand-light); }\n.Tooltip__tooltip___77a1 { position: absolute; animation: tooltipFade 0.2s; }\n.Avatar__avatar___44x1 { border-radius: 50%; }`}
+          {`/* Compiled Output Sample */\n.Alert__alert___99c1 { border-left-width: 4px; }\n.Select__dropdown___88z1 { position: absolute; background: #0f172a; }\n.Tooltip__tooltip___77a1 { position: absolute; animation: tooltipFade 0.2s; }`}
         </div>
       </section>
 

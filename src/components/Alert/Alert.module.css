@@ -1,0 +1,90 @@
+/* Alert.module.css - Scoped Styles for Alert Component */
+.alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  font-family: var(--font-sans);
+  width: 100%;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+/* Variant Styles */
+.info {
+  background-color: var(--color-info-light);
+  border-color: rgba(6, 182, 212, 0.3);
+  color: #cff4fc;
+}
+
+.success {
+  background-color: var(--color-success-light);
+  border-color: rgba(16, 185, 129, 0.3);
+  color: #d1fae5;
+}
+
+.warning {
+  background-color: var(--color-warning-light);
+  border-color: rgba(245, 158, 11, 0.3);
+  color: #fef3c7;
+}
+
+.danger {
+  background-color: var(--color-danger-light);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #fee2e2;
+}
+
+.bordered {
+  border-left-width: 4px;
+}
+
+.icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.title {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.message {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.action {
+  margin-top: 8px;
+}
+
+.closeButton {
+  background: transparent;
+  border: none;
+  color: currentColor;
+  opacity: 0.6;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: var(--radius-sm);
+  transition: opacity 0.2s ease;
+  flex-shrink: 0;
+}
+
+.closeButton:hover {
+  opacity: 1;
+}
