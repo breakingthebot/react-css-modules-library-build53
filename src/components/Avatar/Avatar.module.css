@@ -1,0 +1,144 @@
+/* Avatar.module.css - Scoped Styles for Avatar & AvatarGroup Components */
+.avatar {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  overflow: hidden;
+  user-select: none;
+  background: linear-gradient(135deg, #6366f1, #06b6d4);
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.bordered {
+  outline: 2px solid var(--bg-primary);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.initials {
+  text-transform: uppercase;
+}
+
+/* Avatar Sizes */
+.xs {
+  width: 24px;
+  height: 24px;
+  font-size: 0.65rem;
+}
+
+.sm {
+  width: 32px;
+  height: 32px;
+  font-size: 0.75rem;
+}
+
+.md {
+  width: 40px;
+  height: 40px;
+  font-size: 0.875rem;
+}
+
+.lg {
+  width: 48px;
+  height: 48px;
+  font-size: 1rem;
+}
+
+.xl {
+  width: 64px;
+  height: 64px;
+  font-size: 1.25rem;
+}
+
+/* Status Indicator Dot */
+.statusDot {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 50%;
+  border: 2px solid var(--bg-surface);
+}
+
+.statusDot_xs {
+  width: 6px;
+  height: 6px;
+}
+
+.statusDot_sm {
+  width: 8px;
+  height: 8px;
+}
+
+.statusDot_md {
+  width: 10px;
+  height: 10px;
+}
+
+.statusDot_lg {
+  width: 12px;
+  height: 12px;
+}
+
+.statusDot_xl {
+  width: 14px;
+  height: 14px;
+}
+
+.online {
+  background-color: var(--color-success);
+}
+
+.offline {
+  background-color: var(--text-muted);
+}
+
+.away {
+  background-color: var(--color-warning);
+}
+
+.busy {
+  background-color: var(--color-danger);
+}
+
+/* Avatar Group Container */
+.group {
+  display: inline-flex;
+  align-items: center;
+}
+
+.groupItem {
+  margin-left: -12px;
+  transition: transform 0.2s ease, z-index 0.2s ease;
+}
+
+.groupItem:first-child {
+  margin-left: 0;
+}
+
+.groupItem:hover {
+  transform: translateY(-2px);
+  z-index: 10;
+}
+
+.counter {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: var(--bg-surface-elevated);
+  border: 2px solid var(--bg-primary);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-left: -12px;
+}

@@ -15,6 +15,7 @@ import { Toggle } from './components/Toggle/Toggle';
 import { Progress } from './components/Progress/Progress';
 import { Skeleton } from './components/Skeleton/Skeleton';
 import { Tabs } from './components/Tabs/Tabs';
+import { Avatar, AvatarGroup } from './components/Avatar/Avatar';
 
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -94,7 +95,7 @@ export function App() {
       <header className={styles.header}>
         <div className={styles.badgeStrip}>
           <Badge variant="info" hasDot isPulse>Scoped CSS Architecture</Badge>
-          <Badge variant="success">v1.4.0 Release</Badge>
+          <Badge variant="success">v1.5.0 Release</Badge>
           <Badge variant="neutral">Vite + React</Badge>
         </div>
         <h1 className={styles.title}>ModulaUI Component Library</h1>
@@ -132,11 +133,51 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 2: TABS NAVIGATION BAR (NEW v1.4.0) */}
+      {/* SECTION 2: AVATAR & AVATAR GROUP (NEW v1.5.0) */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>2. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
-          <Badge variant="info" hasDot isPulse>NEW v1.4.0</Badge>
+          <h2 className={styles.sectionTitle}>2. Scoped Avatar &amp; Avatar Group Component (`Avatar.module.css`)</h2>
+          <Badge variant="info" hasDot isPulse>NEW v1.5.0</Badge>
+        </div>
+
+        <div className={styles.grid}>
+          {/* Status Avatars */}
+          <Card>
+            <Card.Header title="User Avatar Badges" subtitle="Initials fallback and real-time status dots" />
+            <Card.Body>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', flexWrap: 'wrap' }}>
+                <Avatar name="Jane Doe" size="lg" status="online" />
+                <Avatar name="Alex Smith" size="lg" status="busy" />
+                <Avatar name="Charlie Brown" size="lg" status="away" />
+                <Avatar name="David Lee" size="lg" status="offline" />
+              </div>
+            </Card.Body>
+          </Card>
+
+          {/* Avatar Group Stack */}
+          <Card>
+            <Card.Header title="Stacked Avatar Group" subtitle="Overlapping team member avatars with +N counter" />
+            <Card.Body>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <AvatarGroup max={4} size="lg">
+                  <Avatar name="Jane Doe" status="online" />
+                  <Avatar name="Alex Smith" status="busy" />
+                  <Avatar name="Charlie Brown" status="away" />
+                  <Avatar name="David Lee" status="offline" />
+                  <Avatar name="Eva Martinez" />
+                  <Avatar name="Frank Miller" />
+                </AvatarGroup>
+              </div>
+            </Card.Body>
+          </Card>
+        </div>
+      </section>
+
+      {/* SECTION 3: TABS NAVIGATION BAR */}
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>3. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
+          <Badge variant="neutral">Navigation System</Badge>
         </div>
 
         <div className={styles.grid}>
@@ -158,10 +199,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 3: PROGRESS BAR & SKELETON LOADERS */}
+      {/* SECTION 4: PROGRESS BAR & SKELETON LOADERS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>3. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>4. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
           <Badge variant="neutral">Feedback System</Badge>
         </div>
 
@@ -208,10 +249,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 4: FORM INPUT & TOGGLE CONTROLS */}
+      {/* SECTION 5: FORM INPUT & TOGGLE CONTROLS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>4. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>5. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
           <Badge variant="neutral">Form Controls</Badge>
         </div>
 
@@ -278,10 +319,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 5: MODAL COMPONENT */}
+      {/* SECTION 6: MODAL COMPONENT */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>5. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>6. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -292,10 +333,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 6: CARD COMPONENT Showcase */}
+      {/* SECTION 7: CARD COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>6. Scoped Card Component (`Card.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>7. Scoped Card Component (`Card.module.css`)</h2>
           <Badge variant="neutral">Layout System</Badge>
         </div>
 
@@ -348,10 +389,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 7: BADGE PILL COMPONENT Showcase */}
+      {/* SECTION 8: BADGE PILL COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>7. Scoped Badge Pill Component (`Badge.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>8. Scoped Badge Pill Component (`Badge.module.css`)</h2>
           <Badge variant="neutral">Status Indicators</Badge>
         </div>
 
@@ -364,20 +405,20 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 8: ACCORDION COMPONENT Showcase */}
+      {/* SECTION 9: ACCORDION COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>8. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>9. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
           <Badge variant="neutral">Expandable FAQ</Badge>
         </div>
 
         <Accordion items={faqItems} />
       </section>
 
-      {/* SECTION 9: TOAST NOTIFICATION STREAM Showcase */}
+      {/* SECTION 10: TOAST NOTIFICATION STREAM Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>9. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>10. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
           <Badge variant="neutral">Floating Alerts</Badge>
         </div>
 
@@ -401,7 +442,7 @@ export function App() {
         </div>
 
         <div className={styles.codeSnippet}>
-          {`/* Compiled Output Sample */\n.Tabs__tab___99a1 { font-family: var(--font-sans); }\n.Tabs__underlineTab___22b4 { border-bottom: 2px solid var(--color-brand); }\n.Progress__bar___82k1 { background: linear-gradient(...); }\n.Skeleton__skeleton___99a2 { animation: shimmer 1.6s infinite; }`}
+          {`/* Compiled Output Sample */\n.Avatar__avatar___44x1 { border-radius: 50%; }\n.Avatar__statusDot___11z2 { position: absolute; }\n.Tabs__tab___99a1 { font-family: var(--font-sans); }\n.Progress__bar___82k1 { background: linear-gradient(...); }`}
         </div>
       </section>
 
