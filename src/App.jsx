@@ -10,9 +10,16 @@ import { Badge } from './components/Badge/Badge';
 import { Accordion } from './components/Accordion/Accordion';
 import { Toast } from './components/Toast/Toast';
 import { Modal } from './components/Modal/Modal';
+import { Input } from './components/Input/Input';
+import { Toggle } from './components/Toggle/Toggle';
 
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [toggleState1, setToggleState1] = useState(true);
+  const [toggleState2, setToggleState2] = useState(false);
+  const [inputValue, setInputValue] = useState('acme-corp');
+  const [inputError, setInputError] = useState('');
+
   const [toasts, setToasts] = useState([
     { id: 1, type: 'success', title: 'CSS Modules Loaded', message: 'All class names are scoped with zero global collision risk!' },
   ]);
@@ -47,7 +54,7 @@ export function App() {
       <header className={styles.header}>
         <div className={styles.badgeStrip}>
           <Badge variant="info" hasDot isPulse>Scoped CSS Architecture</Badge>
-          <Badge variant="success">v1.1.0 Release</Badge>
+          <Badge variant="success">v1.2.0 Release</Badge>
           <Badge variant="neutral">Vite + React</Badge>
         </div>
         <h1 className={styles.title}>ModulaUI Component Library</h1>
@@ -85,11 +92,81 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 2: MODAL COMPONENT (NEW v1.1.0) */}
+      {/* SECTION 2: FORM INPUT & TOGGLE CONTROLS (NEW v1.2.0) */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>2. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
-          <Badge variant="info" hasDot isPulse>NEW v1.1.0</Badge>
+          <h2 className={styles.sectionTitle}>2. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
+          <Badge variant="info" hasDot isPulse>NEW v1.2.0</Badge>
+        </div>
+
+        <div className={styles.grid}>
+          {/* Card Form Controls */}
+          <Card>
+            <Card.Header title="Form Control Group" subtitle="Input with addon prepends and error states" />
+            <Card.Body>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+                <Input
+                  label="Tenant Endpoint Handle"
+                  addon="https://"
+                  placeholder="enter-tenant-slug"
+                  value={inputValue}
+                  onChange={(e) => {
+                    setInputValue(e.target.value);
+                    if (e.target.value.length < 3) {
+                      setInputError('Tenant handle must be at least 3 characters.');
+                    } else {
+                      setInputError('');
+                    }
+                  }}
+                  error={inputError}
+                  helperText="Unique domain prefix for cluster routing."
+                  required
+                />
+
+                <Input
+                  label="Search Telemetry Logs"
+                  icon="🔍"
+                  placeholder="Search error codes or request IDs..."
+                />
+              </div>
+            </Card.Body>
+          </Card>
+
+          {/* Toggle Switches */}
+          <Card>
+            <Card.Header title="Toggle Switch Controls" subtitle="Interactive switches with active state tracks" />
+            <Card.Body>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+                <Toggle
+                  label="Automated CDN Auto-Scaling"
+                  description="Scale worker pods when CPU exceeds 80% load"
+                  checked={toggleState1}
+                  onChange={(val) => {
+                    setToggleState1(val);
+                    addToast('info', 'Auto-Scaling Updated', `CDN Auto-scaling set to ${val ? 'ON' : 'OFF'}`);
+                  }}
+                />
+
+                <Toggle
+                  label="Slack Incident Webhooks"
+                  description="Stream fatal log crashes directly to #ops-alerts"
+                  checked={toggleState2}
+                  onChange={(val) => {
+                    setToggleState2(val);
+                    addToast('warning', 'Slack Alerts Updated', `Slack alerts set to ${val ? 'ON' : 'OFF'}`);
+                  }}
+                />
+              </div>
+            </Card.Body>
+          </Card>
+        </div>
+      </section>
+
+      {/* SECTION 3: MODAL COMPONENT */}
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>3. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
+          <Badge variant="neutral">Overlay System</Badge>
         </div>
 
         <div className={styles.buttonRow}>
@@ -99,10 +176,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 3: CARD COMPONENT Showcase */}
+      {/* SECTION 4: CARD COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>3. Scoped Card Component (`Card.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>4. Scoped Card Component (`Card.module.css`)</h2>
           <Badge variant="neutral">Layout System</Badge>
         </div>
 
@@ -155,10 +232,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 4: BADGE PILL COMPONENT Showcase */}
+      {/* SECTION 5: BADGE PILL COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>4. Scoped Badge Pill Component (`Badge.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>5. Scoped Badge Pill Component (`Badge.module.css`)</h2>
           <Badge variant="neutral">Status Indicators</Badge>
         </div>
 
@@ -171,20 +248,20 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 5: ACCORDION COMPONENT Showcase */}
+      {/* SECTION 6: ACCORDION COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>5. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>6. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
           <Badge variant="neutral">Expandable FAQ</Badge>
         </div>
 
         <Accordion items={faqItems} />
       </section>
 
-      {/* SECTION 6: TOAST NOTIFICATION STREAM Showcase */}
+      {/* SECTION 7: TOAST NOTIFICATION STREAM Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>6. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>7. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
           <Badge variant="neutral">Floating Alerts</Badge>
         </div>
 
@@ -208,7 +285,7 @@ export function App() {
         </div>
 
         <div className={styles.codeSnippet}>
-          {`/* Compiled Output Sample */\n.Modal__overlay___4x9a { backdrop-filter: blur(12px); }\n.Button__button___3a1b { background: linear-gradient(...); }\n.Card__card___9x4d { backdrop-filter: blur(16px); }\n.Badge__badge___11z2 { border-radius: 9999px; }`}
+          {`/* Compiled Output Sample */\n.Input__inputWrapper___1a8z { border-radius: var(--radius-md); }\n.Toggle__switchChecked___88bc { background: linear-gradient(...); }\n.Modal__overlay___4x9a { backdrop-filter: blur(12px); }\n.Button__button___3a1b { background: linear-gradient(...); }`}
         </div>
       </section>
 

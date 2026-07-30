@@ -5,11 +5,16 @@ All notable changes to **Build 53 (ModulaUI — React CSS Modules Component Libr
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2026-07-29
+
+### Added
+- Integrated **Scoped Form Input & Toggle Controls (`Input.jsx`, `Toggle.jsx`)**.
+- Added input fields with addons, icons, error borders, and sliding track toggle switches with brand gradient active states.
+
 ## [1.1.0] - 2026-07-29
 
 ### Added
 - Integrated **Scoped Modal Overlay Component (`Modal.jsx`, `Modal.module.css`)**.
-- Added backdrop blur, entrance scale-up keyframe animations, keyboard `ESC` dismissal, and size variants (`sm`, `md`, `lg`).
 
 ## [1.0.0] - 2026-07-29
 
