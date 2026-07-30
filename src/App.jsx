@@ -20,6 +20,7 @@ import { Tooltip } from './components/Tooltip/Tooltip';
 import { Select } from './components/Select/Select';
 import { Alert } from './components/Alert/Alert';
 import { Slider } from './components/Slider/Slider';
+import { Breadcrumb } from './components/Breadcrumb/Breadcrumb';
 
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -111,13 +112,26 @@ export function App() {
     },
   ];
 
+  const breadcrumbItems1 = [
+    { label: 'Home', icon: '🏠', href: '#' },
+    { label: 'Infrastructure', icon: '⚡', href: '#' },
+    { label: 'us-east-1 Cluster', icon: '🌐', href: '#' },
+    { label: 'Worker Pod Settings', active: true },
+  ];
+
+  const breadcrumbItems2 = [
+    { label: 'Dashboard', href: '#' },
+    { label: 'Security', href: '#' },
+    { label: 'API Keys', active: true },
+  ];
+
   return (
     <div className={styles.app}>
       {/* HEADER */}
       <header className={styles.header}>
         <div className={styles.badgeStrip}>
           <Badge variant="info" hasDot isPulse>Scoped CSS Architecture</Badge>
-          <Badge variant="success">v1.9.0 Release</Badge>
+          <Badge variant="success">v2.0.0 Release</Badge>
           <Badge variant="neutral">Vite + React</Badge>
         </div>
         <h1 className={styles.title}>ModulaUI Component Library</h1>
@@ -161,11 +175,35 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 2: SLIDER RANGE CONTROL (NEW v1.9.0) */}
+      {/* SECTION 2: BREADCRUMB NAVIGATION TRAIL (NEW v2.0.0) */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>2. Scoped Slider Range Control (`Slider.module.css`)</h2>
-          <Badge variant="info" hasDot isPulse>NEW v1.9.0</Badge>
+          <h2 className={styles.sectionTitle}>2. Scoped Breadcrumb Navigation Trail (`Breadcrumb.module.css`)</h2>
+          <Badge variant="info" hasDot isPulse>NEW v2.0.0</Badge>
+        </div>
+
+        <div className={styles.grid}>
+          <Card>
+            <Card.Header title="Breadcrumbs with Icons" subtitle="Icon prepends & slash separator" />
+            <Card.Body>
+              <Breadcrumb items={breadcrumbItems1} separator="/" />
+            </Card.Body>
+          </Card>
+
+          <Card>
+            <Card.Header title="Chevron Separator Trail" subtitle="Simple text path & chevron separator" />
+            <Card.Body>
+              <Breadcrumb items={breadcrumbItems2} separator="›" />
+            </Card.Body>
+          </Card>
+        </div>
+      </section>
+
+      {/* SECTION 3: SLIDER RANGE CONTROL */}
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>3. Scoped Slider Range Control (`Slider.module.css`)</h2>
+          <Badge variant="neutral">Form Controls</Badge>
         </div>
 
         <div className={styles.grid}>
@@ -203,10 +241,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 3: ALERT CALLOUT BANNERS */}
+      {/* SECTION 4: ALERT CALLOUT BANNERS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>3. Scoped Alert Callout Banner (`Alert.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>4. Scoped Alert Callout Banner (`Alert.module.css`)</h2>
           <Badge variant="neutral">Status Banners</Badge>
         </div>
 
@@ -241,10 +279,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 4: DROPDOWN SELECT MENU */}
+      {/* SECTION 5: DROPDOWN SELECT MENU */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>4. Scoped Dropdown Select Menu (`Select.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>5. Scoped Dropdown Select Menu (`Select.module.css`)</h2>
           <Badge variant="neutral">Form Controls</Badge>
         </div>
 
@@ -284,10 +322,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 5: TOOLTIP HOVER POPUP */}
+      {/* SECTION 6: TOOLTIP HOVER POPUP */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>5. Scoped Tooltip Hover Popup Component (`Tooltip.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>6. Scoped Tooltip Hover Popup Component (`Tooltip.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -310,10 +348,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 6: AVATAR & AVATAR GROUP */}
+      {/* SECTION 7: AVATAR & AVATAR GROUP */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>6. Scoped Avatar &amp; Avatar Group Component (`Avatar.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>7. Scoped Avatar &amp; Avatar Group Component (`Avatar.module.css`)</h2>
           <Badge variant="neutral">User Profiles</Badge>
         </div>
 
@@ -358,10 +396,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 7: TABS NAVIGATION BAR */}
+      {/* SECTION 8: TABS NAVIGATION BAR */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>7. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>8. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
           <Badge variant="neutral">Navigation System</Badge>
         </div>
 
@@ -384,10 +422,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 8: PROGRESS BAR & SKELETON LOADERS */}
+      {/* SECTION 9: PROGRESS BAR & SKELETON LOADERS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>8. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>9. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
           <Badge variant="neutral">Feedback System</Badge>
         </div>
 
@@ -434,10 +472,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 9: FORM INPUT & TOGGLE CONTROLS */}
+      {/* SECTION 10: FORM INPUT & TOGGLE CONTROLS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>9. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>10. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
           <Badge variant="neutral">Form Controls</Badge>
         </div>
 
@@ -504,10 +542,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 10: MODAL COMPONENT */}
+      {/* SECTION 11: MODAL COMPONENT */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>10. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>11. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -518,10 +556,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 11: CARD COMPONENT Showcase */}
+      {/* SECTION 12: CARD COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>11. Scoped Card Component (`Card.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>12. Scoped Card Component (`Card.module.css`)</h2>
           <Badge variant="neutral">Layout System</Badge>
         </div>
 
@@ -574,10 +612,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 12: BADGE PILL COMPONENT Showcase */}
+      {/* SECTION 13: BADGE PILL COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>12. Scoped Badge Pill Component (`Badge.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>13. Scoped Badge Pill Component (`Badge.module.css`)</h2>
           <Badge variant="neutral">Status Indicators</Badge>
         </div>
 
@@ -590,20 +628,20 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 13: ACCORDION COMPONENT Showcase */}
+      {/* SECTION 14: ACCORDION COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>13. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>14. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
           <Badge variant="neutral">Expandable FAQ</Badge>
         </div>
 
         <Accordion items={faqItems} />
       </section>
 
-      {/* SECTION 14: TOAST NOTIFICATION STREAM Showcase */}
+      {/* SECTION 15: TOAST NOTIFICATION STREAM Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>14. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>15. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
           <Badge variant="neutral">Floating Alerts</Badge>
         </div>
 
@@ -627,7 +665,7 @@ export function App() {
         </div>
 
         <div className={styles.codeSnippet}>
-          {`/* Compiled Output Sample */\n.Slider__fill___55a1 { background: linear-gradient(...); }\n.Alert__alert___99c1 { border-left-width: 4px; }\n.Select__dropdown___88z1 { position: absolute; background: #0f172a; }`}
+          {`/* Compiled Output Sample */\n.Breadcrumb__nav___88a1 { font-family: var(--font-sans); }\n.Slider__fill___55a1 { background: linear-gradient(...); }\n.Alert__alert___99c1 { border-left-width: 4px; }`}
         </div>
       </section>
 

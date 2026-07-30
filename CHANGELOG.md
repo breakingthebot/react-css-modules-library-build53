@@ -5,11 +5,16 @@ All notable changes to **Build 53 (ModulaUI — React CSS Modules Component Libr
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.0.0] - 2026-07-30
+
+### Added
+- Integrated **Scoped Breadcrumb Navigation Trail Component (`Breadcrumb.jsx`, `Breadcrumb.module.css`)**.
+- Added accessible navigation trails with icon prepends, customizable separators (`/` or `›`), and active page highlights.
+
 ## [1.9.0] - 2026-07-30
 
 ### Added
 - Integrated **Scoped Slider Range Control Component (`Slider.jsx`, `Slider.module.css`)**.
-- Added dynamic gradient track fill, hover scale-up thumb handles, label headers, and live value badge displays.
 
 ## [1.8.0] - 2026-07-30
 
