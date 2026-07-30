@@ -1,5 +1,5 @@
 // src/App.jsx
-// Main Interactive Component Playground showcasing 5 Scoped CSS Modules Components.
+// Main Interactive Component Playground showcasing Scoped CSS Modules Components.
 // Created: 2026-07-29
 
 import React, { useState } from 'react';
@@ -9,8 +9,10 @@ import { Card } from './components/Card/Card';
 import { Badge } from './components/Badge/Badge';
 import { Accordion } from './components/Accordion/Accordion';
 import { Toast } from './components/Toast/Toast';
+import { Modal } from './components/Modal/Modal';
 
 export function App() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [toasts, setToasts] = useState([
     { id: 1, type: 'success', title: 'CSS Modules Loaded', message: 'All class names are scoped with zero global collision risk!' },
   ]);
@@ -45,7 +47,7 @@ export function App() {
       <header className={styles.header}>
         <div className={styles.badgeStrip}>
           <Badge variant="info" hasDot isPulse>Scoped CSS Architecture</Badge>
-          <Badge variant="success">v1.0.0 Release</Badge>
+          <Badge variant="success">v1.1.0 Release</Badge>
           <Badge variant="neutral">Vite + React</Badge>
         </div>
         <h1 className={styles.title}>ModulaUI Component Library</h1>
@@ -83,10 +85,24 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 2: CARD COMPONENT Showcase */}
+      {/* SECTION 2: MODAL COMPONENT (NEW v1.1.0) */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>2. Scoped Card Component (`Card.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>2. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
+          <Badge variant="info" hasDot isPulse>NEW v1.1.0</Badge>
+        </div>
+
+        <div className={styles.buttonRow}>
+          <Button variant="primary" onClick={() => setIsModalOpen(true)}>
+            🪟 Open Accessible Modal Dialog
+          </Button>
+        </div>
+      </section>
+
+      {/* SECTION 3: CARD COMPONENT Showcase */}
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>3. Scoped Card Component (`Card.module.css`)</h2>
           <Badge variant="neutral">Layout System</Badge>
         </div>
 
@@ -103,7 +119,7 @@ export function App() {
             </Card.Body>
             <Card.Footer>
               <Button size="sm" variant="ghost">Dismiss</Button>
-              <Button size="sm" variant="primary">Inspect</Button>
+              <Button size="sm" variant="primary" onClick={() => setIsModalOpen(true)}>Inspect Modal</Button>
             </Card.Footer>
           </Card>
 
@@ -139,10 +155,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 3: BADGE PILL COMPONENT Showcase */}
+      {/* SECTION 4: BADGE PILL COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>3. Scoped Badge Pill Component (`Badge.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>4. Scoped Badge Pill Component (`Badge.module.css`)</h2>
           <Badge variant="neutral">Status Indicators</Badge>
         </div>
 
@@ -155,20 +171,20 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 4: ACCORDION COMPONENT Showcase */}
+      {/* SECTION 5: ACCORDION COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>4. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>5. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
           <Badge variant="neutral">Expandable FAQ</Badge>
         </div>
 
         <Accordion items={faqItems} />
       </section>
 
-      {/* SECTION 5: TOAST NOTIFICATION STREAM Showcase */}
+      {/* SECTION 6: TOAST NOTIFICATION STREAM Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>5. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>6. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
           <Badge variant="neutral">Floating Alerts</Badge>
         </div>
 
@@ -192,9 +208,28 @@ export function App() {
         </div>
 
         <div className={styles.codeSnippet}>
-          {`/* Compiled Output Sample */\n.Button__button___3a1b { background: linear-gradient(...); }\n.Card__card___9x4d { backdrop-filter: blur(16px); }\n.Badge__badge___11z2 { border-radius: 9999px; }`}
+          {`/* Compiled Output Sample */\n.Modal__overlay___4x9a { backdrop-filter: blur(12px); }\n.Button__button___3a1b { background: linear-gradient(...); }\n.Card__card___9x4d { backdrop-filter: blur(16px); }\n.Badge__badge___11z2 { border-radius: 9999px; }`}
         </div>
       </section>
+
+      {/* DEMO MODAL DIALOG */}
+      <Modal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        title="🪟 Scoped Modal Component Demo"
+        footer={
+          <>
+            <Button variant="ghost" onClick={() => setIsModalOpen(false)}>Cancel</Button>
+            <Button variant="primary" onClick={() => { addToast('success', 'Modal Confirmed', 'Action performed successfully!'); setIsModalOpen(false); }}>
+              Confirm Action
+            </Button>
+          </>
+        }
+      >
+        <p>
+          This accessible modal dialog is styled using <strong>`Modal.module.css`</strong>. It features backdrop blur overlays, smooth scale-in keyframe animations, and keyboard <kbd style={{ background: '#334155', padding: '2px 6px', borderRadius: '4px' }}>ESC</kbd> dismissal.
+        </p>
+      </Modal>
 
       {/* FLOATING TOAST CONTAINER */}
       <div className={styles.toastContainer}>
