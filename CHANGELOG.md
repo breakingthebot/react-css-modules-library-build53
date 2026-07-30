@@ -5,11 +5,16 @@ All notable changes to **Build 53 (ModulaUI — React CSS Modules Component Libr
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-07-30
+
+### Added
+- Integrated **Scoped Slide-Over Drawer Panel Component (`Drawer.jsx`, `Drawer.module.css`)**.
+- Added side sheet drawer panel with backdrop blur, slide-in keyframe animations, size variants (`sm`, `md`, `lg`), and keyboard `ESC` dismissal.
+
 ## [2.0.0] - 2026-07-30
 
 ### Added
 - Integrated **Scoped Breadcrumb Navigation Trail Component (`Breadcrumb.jsx`, `Breadcrumb.module.css`)**.
-- Added accessible navigation trails with icon prepends, customizable separators (`/` or `›`), and active page highlights.
 
 ## [1.9.0] - 2026-07-30
 

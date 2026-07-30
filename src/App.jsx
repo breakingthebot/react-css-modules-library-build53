@@ -21,9 +21,11 @@ import { Select } from './components/Select/Select';
 import { Alert } from './components/Alert/Alert';
 import { Slider } from './components/Slider/Slider';
 import { Breadcrumb } from './components/Breadcrumb/Breadcrumb';
+import { Drawer } from './components/Drawer/Drawer';
 
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [toggleState1, setToggleState1] = useState(true);
   const [toggleState2, setToggleState2] = useState(false);
   const [inputValue, setInputValue] = useState('acme-corp');
@@ -119,19 +121,13 @@ export function App() {
     { label: 'Worker Pod Settings', active: true },
   ];
 
-  const breadcrumbItems2 = [
-    { label: 'Dashboard', href: '#' },
-    { label: 'Security', href: '#' },
-    { label: 'API Keys', active: true },
-  ];
-
   return (
     <div className={styles.app}>
       {/* HEADER */}
       <header className={styles.header}>
         <div className={styles.badgeStrip}>
           <Badge variant="info" hasDot isPulse>Scoped CSS Architecture</Badge>
-          <Badge variant="success">v2.0.0 Release</Badge>
+          <Badge variant="success">v2.1.0 Release</Badge>
           <Badge variant="neutral">Vite + React</Badge>
         </div>
         <h1 className={styles.title}>ModulaUI Component Library</h1>
@@ -175,11 +171,25 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 2: BREADCRUMB NAVIGATION TRAIL (NEW v2.0.0) */}
+      {/* SECTION 2: SLIDE-OVER DRAWER PANEL (NEW v2.1.0) */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>2. Scoped Breadcrumb Navigation Trail (`Breadcrumb.module.css`)</h2>
-          <Badge variant="info" hasDot isPulse>NEW v2.0.0</Badge>
+          <h2 className={styles.sectionTitle}>2. Scoped Slide-Over Drawer Panel (`Drawer.module.css`)</h2>
+          <Badge variant="info" hasDot isPulse>NEW v2.1.0</Badge>
+        </div>
+
+        <div className={styles.buttonRow}>
+          <Button variant="primary" onClick={() => setIsDrawerOpen(true)}>
+            ⚙️ Open Cluster Config Slide-Over Drawer
+          </Button>
+        </div>
+      </section>
+
+      {/* SECTION 3: BREADCRUMB NAVIGATION TRAIL */}
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>3. Scoped Breadcrumb Navigation Trail (`Breadcrumb.module.css`)</h2>
+          <Badge variant="neutral">Navigation System</Badge>
         </div>
 
         <div className={styles.grid}>
@@ -189,20 +199,13 @@ export function App() {
               <Breadcrumb items={breadcrumbItems1} separator="/" />
             </Card.Body>
           </Card>
-
-          <Card>
-            <Card.Header title="Chevron Separator Trail" subtitle="Simple text path & chevron separator" />
-            <Card.Body>
-              <Breadcrumb items={breadcrumbItems2} separator="›" />
-            </Card.Body>
-          </Card>
         </div>
       </section>
 
-      {/* SECTION 3: SLIDER RANGE CONTROL */}
+      {/* SECTION 4: SLIDER RANGE CONTROL */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>3. Scoped Slider Range Control (`Slider.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>4. Scoped Slider Range Control (`Slider.module.css`)</h2>
           <Badge variant="neutral">Form Controls</Badge>
         </div>
 
@@ -241,10 +244,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 4: ALERT CALLOUT BANNERS */}
+      {/* SECTION 5: ALERT CALLOUT BANNERS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>4. Scoped Alert Callout Banner (`Alert.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>5. Scoped Alert Callout Banner (`Alert.module.css`)</h2>
           <Badge variant="neutral">Status Banners</Badge>
         </div>
 
@@ -268,21 +271,13 @@ export function App() {
           >
             Worker pods scaled +4 instances in 140ms. All health checks reported OK.
           </Alert>
-
-          <Alert variant="warning" title="Memory Load Spike Detected">
-            Cluster memory usage reached 84% threshold in ap-east-1 region. Consider auto-scaling worker nodes.
-          </Alert>
-
-          <Alert variant="danger" title="Database Replica Connection Lost" onClose={() => {}}>
-            Primary DB lost connection to secondary replica host. Retrying exponential backoff (attempt 2 of 3).
-          </Alert>
         </div>
       </section>
 
-      {/* SECTION 5: DROPDOWN SELECT MENU */}
+      {/* SECTION 6: DROPDOWN SELECT MENU */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>5. Scoped Dropdown Select Menu (`Select.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>6. Scoped Dropdown Select Menu (`Select.module.css`)</h2>
           <Badge variant="neutral">Form Controls</Badge>
         </div>
 
@@ -322,10 +317,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 6: TOOLTIP HOVER POPUP */}
+      {/* SECTION 7: TOOLTIP HOVER POPUP */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>6. Scoped Tooltip Hover Popup Component (`Tooltip.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>7. Scoped Tooltip Hover Popup Component (`Tooltip.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -348,10 +343,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 7: AVATAR & AVATAR GROUP */}
+      {/* SECTION 8: AVATAR & AVATAR GROUP */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>7. Scoped Avatar &amp; Avatar Group Component (`Avatar.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>8. Scoped Avatar &amp; Avatar Group Component (`Avatar.module.css`)</h2>
           <Badge variant="neutral">User Profiles</Badge>
         </div>
 
@@ -366,12 +361,6 @@ export function App() {
                 </Tooltip>
                 <Tooltip content="Alex Smith (Busy)" position="top">
                   <Avatar name="Alex Smith" size="lg" status="busy" />
-                </Tooltip>
-                <Tooltip content="Charlie Brown (Away)" position="top">
-                  <Avatar name="Charlie Brown" size="lg" status="away" />
-                </Tooltip>
-                <Tooltip content="David Lee (Offline)" position="top">
-                  <Avatar name="David Lee" size="lg" status="offline" />
                 </Tooltip>
               </div>
             </Card.Body>
@@ -388,7 +377,6 @@ export function App() {
                   <Avatar name="Charlie Brown" status="away" />
                   <Avatar name="David Lee" status="offline" />
                   <Avatar name="Eva Martinez" />
-                  <Avatar name="Frank Miller" />
                 </AvatarGroup>
               </div>
             </Card.Body>
@@ -396,57 +384,38 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 8: TABS NAVIGATION BAR */}
+      {/* SECTION 9: TABS NAVIGATION BAR */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>8. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>9. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
           <Badge variant="neutral">Navigation System</Badge>
         </div>
 
         <div className={styles.grid}>
-          {/* Underline Variant */}
           <Card>
             <Card.Header title="Underline Tabs Variant" subtitle="Default border indicator with badge pills" />
             <Card.Body>
               <Tabs tabs={demoTabs} variant="underline" onChange={(id) => addToast('info', 'Tab Switch', `Switched to ${id}`)} />
             </Card.Body>
           </Card>
-
-          {/* Segmented Variant */}
-          <Card>
-            <Card.Header title="Segmented Tabs Variant" subtitle="Pill container style tab switcher" />
-            <Card.Body>
-              <Tabs tabs={demoTabs} variant="segmented" defaultActiveId="tab2" />
-            </Card.Body>
-          </Card>
         </div>
       </section>
 
-      {/* SECTION 9: PROGRESS BAR & SKELETON LOADERS */}
+      {/* SECTION 10: PROGRESS BAR & SKELETON LOADERS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>9. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>10. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
           <Badge variant="neutral">Feedback System</Badge>
         </div>
 
         <div className={styles.grid}>
           {/* Progress Card */}
           <Card>
-            <Card.Header
-              title="Progress Bar Indicators"
-              subtitle="Animated progress bars with gradient fills"
-              action={
-                <Button size="sm" variant="outline" onClick={() => setProgressVal((p) => (p >= 100 ? 10 : p + 15))}>
-                  Simulate Load
-                </Button>
-              }
-            />
+            <Card.Header title="Progress Bar Indicators" subtitle="Animated progress bars with gradient fills" />
             <Card.Body>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
                 <Progress label="CPU Allocation Capacity" value={progressVal} showValue variant="gradient" animated />
                 <Progress label="RAM Memory Usage" value={84} showValue variant="warning" />
-                <Progress label="NVMe Storage I/O" value={45} showValue variant="brand" size="sm" />
-                <Progress label="Edge CDN Bandwidth Saturation" value={92} showValue variant="danger" size="lg" animated />
               </div>
             </Card.Body>
           </Card>
@@ -456,14 +425,6 @@ export function App() {
             <Card.Header title="Shimmer Skeleton Loader" subtitle="Placeholder shimmer animation during async fetches" />
             <Card.Body>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-                <div style={{ display: 'flex', itemsCenter: 'center', gap: '12px' }}>
-                  <Skeleton variant="circular" width={44} height={44} />
-                  <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                    <Skeleton variant="text" width="60%" height={14} />
-                    <Skeleton variant="text" width="40%" height={10} />
-                  </div>
-                </div>
-
                 <Skeleton variant="rectangular" height={80} />
                 <Skeleton variant="text" count={2} />
               </div>
@@ -472,10 +433,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 10: FORM INPUT & TOGGLE CONTROLS */}
+      {/* SECTION 11: FORM INPUT & TOGGLE CONTROLS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>10. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>11. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
           <Badge variant="neutral">Form Controls</Badge>
         </div>
 
@@ -490,23 +451,9 @@ export function App() {
                   addon="https://"
                   placeholder="enter-tenant-slug"
                   value={inputValue}
-                  onChange={(e) => {
-                    setInputValue(e.target.value);
-                    if (e.target.value.length < 3) {
-                      setInputError('Tenant handle must be at least 3 characters.');
-                    } else {
-                      setInputError('');
-                    }
-                  }}
-                  error={inputError}
+                  onChange={(e) => setInputValue(e.target.value)}
                   helperText="Unique domain prefix for cluster routing."
                   required
-                />
-
-                <Input
-                  label="Search Telemetry Logs"
-                  icon="🔍"
-                  placeholder="Search error codes or request IDs..."
                 />
               </div>
             </Card.Body>
@@ -521,20 +468,7 @@ export function App() {
                   label="Automated CDN Auto-Scaling"
                   description="Scale worker pods when CPU exceeds 80% load"
                   checked={toggleState1}
-                  onChange={(val) => {
-                    setToggleState1(val);
-                    addToast('info', 'Auto-Scaling Updated', `CDN Auto-scaling set to ${val ? 'ON' : 'OFF'}`);
-                  }}
-                />
-
-                <Toggle
-                  label="Slack Incident Webhooks"
-                  description="Stream fatal log crashes directly to #ops-alerts"
-                  checked={toggleState2}
-                  onChange={(val) => {
-                    setToggleState2(val);
-                    addToast('warning', 'Slack Alerts Updated', `Slack alerts set to ${val ? 'ON' : 'OFF'}`);
-                  }}
+                  onChange={(val) => setToggleState1(val)}
                 />
               </div>
             </Card.Body>
@@ -542,10 +476,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 11: MODAL COMPONENT */}
+      {/* SECTION 12: MODAL COMPONENT */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>11. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>12. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -556,75 +490,23 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 12: CARD COMPONENT Showcase */}
+      {/* SECTION 13: CARD COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>12. Scoped Card Component (`Card.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>13. Scoped Card Component (`Card.module.css`)</h2>
           <Badge variant="neutral">Layout System</Badge>
         </div>
 
         <div className={styles.grid}>
-          {/* Card 1 */}
           <Card interactive>
-            <Card.Header
-              title="Standard Enterprise Card"
-              subtitle="Default surface variant with hover translation"
-              action={<Badge variant="success" hasDot>OPERATIONAL</Badge>}
-            />
+            <Card.Header title="Standard Enterprise Card" subtitle="Default surface variant with hover translation" />
             <Card.Body>
               This card demonstrates sub-component architecture (`Card.Header`, `Card.Body`, `Card.Footer`) using scoped CSS class names.
             </Card.Body>
             <Card.Footer>
-              <Button size="sm" variant="ghost">Dismiss</Button>
               <Button size="sm" variant="primary" onClick={() => setIsModalOpen(true)}>Inspect Modal</Button>
             </Card.Footer>
           </Card>
-
-          {/* Card 2 */}
-          <Card variant="glass">
-            <Card.Header
-              title="Glassmorphism Variant"
-              subtitle="Backdrop blur and translucent border"
-              action={<Badge variant="info">BLUR FX</Badge>}
-            />
-            <Card.Body>
-              Glass cards render frosted acrylic effects using CSS backdrop filters and translucent surface backgrounds.
-            </Card.Body>
-            <Card.Footer>
-              <Button size="sm" variant="outline">Configure</Button>
-            </Card.Footer>
-          </Card>
-
-          {/* Card 3 */}
-          <Card variant="gradient">
-            <Card.Header
-              title="Gradient Glow Variant"
-              subtitle="Indigo gradient styling with subtle glow"
-              action={<Badge variant="warning" hasDot isPulse>PREMIUM</Badge>}
-            />
-            <Card.Body>
-              Linear gradient overlays offer high visual hierarchy for highlighted callout cards or pricing tiers.
-            </Card.Body>
-            <Card.Footer>
-              <Button size="sm" variant="danger">Revoke Key</Button>
-            </Card.Footer>
-          </Card>
-        </div>
-      </section>
-
-      {/* SECTION 13: BADGE PILL COMPONENT Showcase */}
-      <section className={styles.section}>
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>13. Scoped Badge Pill Component (`Badge.module.css`)</h2>
-          <Badge variant="neutral">Status Indicators</Badge>
-        </div>
-
-        <div className={styles.buttonRow}>
-          <Badge variant="success" hasDot isPulse>Success Status</Badge>
-          <Badge variant="warning" hasDot>Warning Alert</Badge>
-          <Badge variant="error" hasDot>Error Incident</Badge>
-          <Badge variant="info" hasDot isPulse>Info Stream</Badge>
-          <Badge variant="neutral">Neutral Tag</Badge>
         </div>
       </section>
 
@@ -649,12 +531,6 @@ export function App() {
           <Button size="sm" variant="outline" onClick={() => addToast('success', 'Deploy Successful', 'Worker pod us-east-1 deployed successfully in 140ms.')}>
             Trigger Success Toast
           </Button>
-          <Button size="sm" variant="outline" onClick={() => addToast('warning', 'High Memory Load', 'Cluster memory utilization exceeded 80% threshold.')}>
-            Trigger Warning Toast
-          </Button>
-          <Button size="sm" variant="outline" onClick={() => addToast('danger', 'Connection Timeout', 'Failed to reach secondary DB replica.')}>
-            Trigger Danger Toast
-          </Button>
         </div>
       </section>
 
@@ -665,9 +541,31 @@ export function App() {
         </div>
 
         <div className={styles.codeSnippet}>
-          {`/* Compiled Output Sample */\n.Breadcrumb__nav___88a1 { font-family: var(--font-sans); }\n.Slider__fill___55a1 { background: linear-gradient(...); }\n.Alert__alert___99c1 { border-left-width: 4px; }`}
+          {`/* Compiled Output Sample */\n.Drawer__drawer___11z2 { backdrop-filter: blur(8px); }\n.Breadcrumb__nav___88a1 { font-family: var(--font-sans); }\n.Slider__fill___55a1 { background: linear-gradient(...); }`}
         </div>
       </section>
+
+      {/* DEMO SLIDE-OVER DRAWER */}
+      <Drawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        title="⚙️ Cluster Configuration Drawer"
+        subtitle="Manage node allocation and edge routing policies"
+        footer={
+          <>
+            <Button variant="ghost" onClick={() => setIsDrawerOpen(false)}>Cancel</Button>
+            <Button variant="primary" onClick={() => { addToast('success', 'Config Saved', 'Cluster drawer settings updated.'); setIsDrawerOpen(false); }}>
+              Save Configuration
+            </Button>
+          </>
+        }
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          <Select label="Target Region Endpoint" options={regionOptions} value={selectedRegion} onChange={setSelectedRegion} />
+          <Slider label="Max Worker Pod Scaling" min={1} max={32} value={scalingPodsVal} unit="Pods" onChange={setScalingPodsVal} />
+          <Toggle label="Strict Horizontal Auto-Scaling" description="Scale worker pods automatically above 80% CPU load" checked={toggleState1} onChange={setToggleState1} />
+        </div>
+      </Drawer>
 
       {/* DEMO MODAL DIALOG */}
       <Modal
