@@ -1,6 +1,6 @@
 # Build 53: ModulaUI — React CSS Modules Component Library
 
-[![Vercel Deployment](https://img.shields.io/badge/Vercel-Live%20Demo-000000?style=for-the-badge&logo=vercel)](https://react-css-modules-library-build53.vercel.app)
+[![Vercel Deployment](https://img.shields.io/badge/Vercel-Live%20Demo-000000?style=for-the-badge&logo=vercel)](https://react-css-modules-library-build53-pvl71zvas.vercel.app)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/breakingthebot/react-css-modules-library-build53)
 [![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](file:///C:/Users/marve/Desktop/AI-286-Builds/Build_53/LICENSE)
 [![CSS Modules](https://img.shields.io/badge/CSS-Modules-blue?style=for-the-badge&logo=css3)](file:///C:/Users/marve/Desktop/AI-286-Builds/Build_53/src/App.module.css)
@@ -13,7 +13,8 @@
 **ModulaUI** is a standalone, production-grade **React UI Component Library** engineered specifically to demonstrate scoped CSS Modules architecture (`*.module.css`) for modern frontend web applications. Featuring 10 fully reusable components (`Button`, `Progress`, `Skeleton`, `Input`, `Toggle`, `Modal`, `Card`, `Badge`, `Accordion`, `Toast`), ModulaUI guarantees 100% style isolation and zero class name collisions across large-scale codebases.
 
 ### 🌐 Live Production Demo
-- **Live Vercel Application**: [https://react-css-modules-library-build53.vercel.app](https://react-css-modules-library-build53.vercel.app)
+- **Live Vercel Application**: [https://react-css-modules-library-build53-pvl71zvas.vercel.app](https://react-css-modules-library-build53-pvl71zvas.vercel.app)
+- **Vercel Production Domain**: [https://react-css-modules-library-build53.vercel.app](https://react-css-modules-library-build53.vercel.app)
 - **GitHub Codebase**: [https://github.com/breakingthebot/react-css-modules-library-build53](https://github.com/breakingthebot/react-css-modules-library-build53)
 - **License**: [MIT License](file:///C:/Users/marve/Desktop/AI-286-Builds/Build_53/LICENSE)
 
@@ -47,6 +48,7 @@ Build_53/
 ├── LICENSE                   # Official MIT License
 ├── package.json              # Project dependencies & build scripts
 ├── vite.config.js            # Vite CSS Modules hash configuration
+├── vercel.json               # Vercel SPA routing & dist output configuration
 └── .gitignore                # SOP exclusion rules
 ```
 
