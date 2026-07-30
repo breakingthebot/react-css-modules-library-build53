@@ -1,6 +1,6 @@
 // src/App.jsx
 // Main Interactive Component Playground showcasing Scoped CSS Modules Components.
-// Created: 2026-07-29
+// Created: 2026-07-30
 
 import React, { useState } from 'react';
 import styles from './App.module.css';
@@ -14,6 +14,7 @@ import { Input } from './components/Input/Input';
 import { Toggle } from './components/Toggle/Toggle';
 import { Progress } from './components/Progress/Progress';
 import { Skeleton } from './components/Skeleton/Skeleton';
+import { Tabs } from './components/Tabs/Tabs';
 
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -51,13 +52,49 @@ export function App() {
     },
   ];
 
+  const demoTabs = [
+    {
+      id: 'tab1',
+      label: 'Infrastructure Health',
+      icon: '📊',
+      badge: <Badge variant="success" hasDot>99.99%</Badge>,
+      content: (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <p>Global CDN edge clusters operating at nominal latency across 14 edge locations.</p>
+          <Progress label="Overall System SLA Health" value={99} showValue variant="gradient" animated />
+        </div>
+      ),
+    },
+    {
+      id: 'tab2',
+      label: 'Security & OAuth Scopes',
+      icon: '🔐',
+      badge: <Badge variant="info">3 Active Keys</Badge>,
+      content: (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+          <p>Active secret API keys and OAuth 2.0 bearer access scopes for dev environment.</p>
+          <Input label="Secret Production API Key" value="ak_prod_9918231x... (Encrypted)" readOnly addon="KEY" />
+        </div>
+      ),
+    },
+    {
+      id: 'tab3',
+      label: 'Archival Storage Logs',
+      icon: '📜',
+      badge: <Badge variant="neutral">1.8TB</Badge>,
+      content: (
+        <p>Telemetry data retention set to 90 days with automated NVMe vault synchronization.</p>
+      ),
+    },
+  ];
+
   return (
     <div className={styles.app}>
       {/* HEADER */}
       <header className={styles.header}>
         <div className={styles.badgeStrip}>
           <Badge variant="info" hasDot isPulse>Scoped CSS Architecture</Badge>
-          <Badge variant="success">v1.3.0 Release</Badge>
+          <Badge variant="success">v1.4.0 Release</Badge>
           <Badge variant="neutral">Vite + React</Badge>
         </div>
         <h1 className={styles.title}>ModulaUI Component Library</h1>
@@ -95,11 +132,37 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 2: PROGRESS BAR & SKELETON LOADERS (NEW v1.3.0) */}
+      {/* SECTION 2: TABS NAVIGATION BAR (NEW v1.4.0) */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>2. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
-          <Badge variant="info" hasDot isPulse>NEW v1.3.0</Badge>
+          <h2 className={styles.sectionTitle}>2. Scoped Tabs Navigation Bar Component (`Tabs.module.css`)</h2>
+          <Badge variant="info" hasDot isPulse>NEW v1.4.0</Badge>
+        </div>
+
+        <div className={styles.grid}>
+          {/* Underline Variant */}
+          <Card>
+            <Card.Header title="Underline Tabs Variant" subtitle="Default border indicator with badge pills" />
+            <Card.Body>
+              <Tabs tabs={demoTabs} variant="underline" onChange={(id) => addToast('info', 'Tab Switch', `Switched to ${id}`)} />
+            </Card.Body>
+          </Card>
+
+          {/* Segmented Variant */}
+          <Card>
+            <Card.Header title="Segmented Tabs Variant" subtitle="Pill container style tab switcher" />
+            <Card.Body>
+              <Tabs tabs={demoTabs} variant="segmented" defaultActiveId="tab2" />
+            </Card.Body>
+          </Card>
+        </div>
+      </section>
+
+      {/* SECTION 3: PROGRESS BAR & SKELETON LOADERS */}
+      <section className={styles.section}>
+        <div className={styles.sectionHeader}>
+          <h2 className={styles.sectionTitle}>3. Scoped Progress Bar &amp; Skeleton Loader (`Progress.module.css`, `Skeleton.module.css`)</h2>
+          <Badge variant="neutral">Feedback System</Badge>
         </div>
 
         <div className={styles.grid}>
@@ -145,10 +208,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 3: FORM INPUT & TOGGLE CONTROLS */}
+      {/* SECTION 4: FORM INPUT & TOGGLE CONTROLS */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>3. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>4. Scoped Form Inputs &amp; Toggle Switch (`Input.module.css`, `Toggle.module.css`)</h2>
           <Badge variant="neutral">Form Controls</Badge>
         </div>
 
@@ -215,10 +278,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 4: MODAL COMPONENT */}
+      {/* SECTION 5: MODAL COMPONENT */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>4. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>5. Scoped Modal Overlay Component (`Modal.module.css`)</h2>
           <Badge variant="neutral">Overlay System</Badge>
         </div>
 
@@ -229,10 +292,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 5: CARD COMPONENT Showcase */}
+      {/* SECTION 6: CARD COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>5. Scoped Card Component (`Card.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>6. Scoped Card Component (`Card.module.css`)</h2>
           <Badge variant="neutral">Layout System</Badge>
         </div>
 
@@ -285,10 +348,10 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 6: BADGE PILL COMPONENT Showcase */}
+      {/* SECTION 7: BADGE PILL COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>6. Scoped Badge Pill Component (`Badge.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>7. Scoped Badge Pill Component (`Badge.module.css`)</h2>
           <Badge variant="neutral">Status Indicators</Badge>
         </div>
 
@@ -301,20 +364,20 @@ export function App() {
         </div>
       </section>
 
-      {/* SECTION 7: ACCORDION COMPONENT Showcase */}
+      {/* SECTION 8: ACCORDION COMPONENT Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>7. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>8. Scoped Accordion Disclosure Component (`Accordion.module.css`)</h2>
           <Badge variant="neutral">Expandable FAQ</Badge>
         </div>
 
         <Accordion items={faqItems} />
       </section>
 
-      {/* SECTION 8: TOAST NOTIFICATION STREAM Showcase */}
+      {/* SECTION 9: TOAST NOTIFICATION STREAM Showcase */}
       <section className={styles.section}>
         <div className={styles.sectionHeader}>
-          <h2 className={styles.sectionTitle}>8. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
+          <h2 className={styles.sectionTitle}>9. Scoped Toast Notification Stream Component (`Toast.module.css`)</h2>
           <Badge variant="neutral">Floating Alerts</Badge>
         </div>
 
@@ -338,7 +401,7 @@ export function App() {
         </div>
 
         <div className={styles.codeSnippet}>
-          {`/* Compiled Output Sample */\n.Progress__bar___82k1 { background: linear-gradient(...); }\n.Skeleton__skeleton___99a2 { animation: shimmer 1.6s infinite; }\n.Input__inputWrapper___1a8z { border-radius: var(--radius-md); }\n.Toggle__switchChecked___88bc { background: linear-gradient(...); }\n.Modal__overlay___4x9a { backdrop-filter: blur(12px); }\n.Button__button___3a1b { background: linear-gradient(...); }`}
+          {`/* Compiled Output Sample */\n.Tabs__tab___99a1 { font-family: var(--font-sans); }\n.Tabs__underlineTab___22b4 { border-bottom: 2px solid var(--color-brand); }\n.Progress__bar___82k1 { background: linear-gradient(...); }\n.Skeleton__skeleton___99a2 { animation: shimmer 1.6s infinite; }`}
         </div>
       </section>
 
