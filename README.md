@@ -2,9 +2,9 @@
 
 [![Vercel Deployment](https://img.shields.io/badge/Vercel-Live%20Demo-000000?style=for-the-badge&logo=vercel)](https://react-css-modules-library-build53-pvl71zvas.vercel.app)
 [![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=for-the-badge&logo=github)](https://github.com/breakingthebot/react-css-modules-library-build53)
-[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](file:///C:/Users/marve/Desktop/AI-286-Builds/Build_53/LICENSE)
-[![CSS Modules](https://img.shields.io/badge/CSS-Modules-blue?style=for-the-badge&logo=css3)](file:///C:/Users/marve/Desktop/AI-286-Builds/Build_53/src/App.module.css)
-[![Release](https://img.shields.io/badge/Release-v2.4.0-indigo?style=for-the-badge)](file:///C:/Users/marve/Desktop/AI-286-Builds/Build_53/CHANGELOG.md)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
+[![CSS Modules](https://img.shields.io/badge/CSS-Modules-blue?style=for-the-badge&logo=css3)](https://github.com/css-modules/css-modules)
+[![Release](https://img.shields.io/badge/Release-v2.4.0-indigo?style=for-the-badge)](CHANGELOG.md)
 
 ---
 
@@ -16,7 +16,7 @@
 - **Live Vercel Application**: [https://react-css-modules-library-build53-pvl71zvas.vercel.app](https://react-css-modules-library-build53-pvl71zvas.vercel.app)
 - **Vercel Production Domain**: [https://react-css-modules-library-build53.vercel.app](https://react-css-modules-library-build53.vercel.app)
 - **GitHub Codebase**: [https://github.com/breakingthebot/react-css-modules-library-build53](https://github.com/breakingthebot/react-css-modules-library-build53)
-- **License**: [MIT License](file:///C:/Users/marve/Desktop/AI-286-Builds/Build_53/LICENSE)
+- **License**: [MIT License](LICENSE)
 
 ---
 
@@ -120,4 +120,4 @@ This component library operates 100% client-side in browser memory. No user inpu
 
 ## 📄 License
 
-Distributed under the MIT License. See [LICENSE](file:///C:/Users/marve/Desktop/AI-286-Builds/Build_53/LICENSE) for more information.
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
